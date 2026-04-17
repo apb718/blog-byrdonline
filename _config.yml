@@ -1,0 +1,26 @@
+title: alec.dev
+description: Infrastructure, Linux, and things worth writing down.
+author: Alec
+baseurl: ""
+url: ""
+
+# Build
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+# Pagination (requires jekyll-paginate gem)
+paginate: 5
+paginate_path: "/page:num/"
+
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor/

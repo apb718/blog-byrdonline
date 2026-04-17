@@ -1,0 +1,10 @@
+.highlight {
+  .c, .c1, .cm  { color: #6a8c6b; font-style: italic; }
+  .k, .kd, .kn  { color: #8db88e; }
+  .s, .s1, .s2  { color: #a8c8a0; }
+  .nf, .nc       { color: #c8e0c0; }
+  .mi, .mf       { color: #b0d4a8; }
+  .o             { color: #7aaa7a; }
+  .n, .na, .nb   { color: $code-text; }
+  .err           { color: #e07070; background: none; }
+}
