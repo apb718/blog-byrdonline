@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Managing SELinux contexts with rhel-system-roles"
+published: true
 date: 2026-04-12
 categories: [Ansible]
 tags: [ansible, selinux, rhce, rhel]
