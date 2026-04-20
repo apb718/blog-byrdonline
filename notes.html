@@ -1,0 +1,32 @@
+---
+layout: page
+title: Notes
+label: Short-form
+subtitle: Quick scraps — commands worth remembering, links, and half-formed ideas. Lighter weight than the writing archive.
+permalink: /notes/
+---
+
+{% assign notes = site.posts | where: "categories", "notes" %}
+
+{% if notes.size > 0 %}
+<ul class="notes-list">
+  {% for note in notes %}
+  <li class="notes-list__item">
+    <div class="notes-list__meta">{{ note.date | date: "%b %-d, %Y" }}</div>
+    <h3 class="notes-list__title">
+      <a href="{{ note.url | relative_url }}">{{ note.title }}</a>
+    </h3>
+    {% if note.description %}
+      <p class="notes-list__excerpt">{{ note.description }}</p>
+    {% else %}
+      <p class="notes-list__excerpt">{{ note.excerpt | strip_html | truncatewords: 30 }}</p>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<div class="empty-state">
+  <p>Nothing here yet.</p>
+  <p class="empty-state__hint">Notes are filed under the <code>notes</code> category. Drop a file in <code>_posts/</code> with <code>categories: [notes]</code> and it shows up here.</p>
+</div>
+{% endif %}

@@ -1,0 +1,48 @@
+---
+layout: page
+title: Writing
+label: Archive
+subtitle: Longer-form posts, organized by year. Filter by topic to narrow things down.
+permalink: /writing/
+---
+
+{% assign categories = "" | split: "" %}
+{% for post in site.posts %}
+  {% for cat in post.categories %}
+    {% unless categories contains cat %}
+      {% assign categories = categories | push: cat %}
+    {% endunless %}
+  {% endfor %}
+{% endfor %}
+{% assign categories = categories | sort %}
+
+{% if categories.size > 0 %}
+<div class="filter-row">
+  <span class="filter-row__label">Topics:</span>
+  {% for cat in categories %}
+    <a class="tag-badge" href="#{{ cat | slugify }}">{{ cat }}</a>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+{% for year_group in posts_by_year %}
+<section class="archive-year">
+  <h2 class="archive-year__title">{{ year_group.name }}</h2>
+  <ul class="archive-list">
+    {% for post in year_group.items %}
+    <li class="archive-list__item">
+      <span class="archive-list__date">{{ post.date | date: "%b %-d" }}</span>
+      <a class="archive-list__title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      {% if post.categories.size > 0 %}
+        <span class="archive-list__cat">{{ post.categories | first }}</span>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}
+
+{% if site.posts.size == 0 %}
+<p class="empty-state">No posts yet. Check back soon.</p>
+{% endif %}

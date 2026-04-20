@@ -167,6 +167,252 @@
   &:hover { background: $border; text-decoration: none; }
 }
 
+.hero__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.section {
+  padding: 2.5rem 0 1rem;
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid $border;
+  }
+
+  &__title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $text-secondary;
+  }
+
+  &__link, &__sub {
+    font-size: 12px;
+    color: $text-muted;
+  }
+
+  &__link:hover { color: $accent; text-decoration: none; }
+}
+
+.topics-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0;
+  border-top: 1px solid $border;
+  border-left: 1px solid $border;
+
+  &__item { margin: 0; }
+
+  &__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1rem;
+    border-right: 1px solid $border;
+    border-bottom: 1px solid $border;
+    color: $text-primary;
+    background: $bg;
+    transition: background 0.15s;
+    text-decoration: none;
+
+    &:hover { background: $hero-bg; text-decoration: none; }
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  &__count {
+    font-size: 11px;
+    color: $text-muted;
+    letter-spacing: 0.5px;
+  }
+}
+
+.page {
+  padding: 3rem 0;
+
+  &__header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid $border;
+  }
+
+  &__label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $accent;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+    margin-bottom: 0.5rem;
+  }
+
+  &__subtitle {
+    font-size: 15px;
+    color: $text-secondary;
+    max-width: 580px;
+  }
+
+  &__content {
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin: 2rem 0 0.75rem;
+    }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin: 1.5rem 0 0.5rem;
+    }
+    p { margin-bottom: 1.1rem; }
+    ul, ol {
+      margin: 0 0 1.25rem 1.5rem;
+      li { margin-bottom: 0.35rem; }
+    }
+    code {
+      font-family: $font-mono;
+      font-size: 0.875em;
+      background: $hero-bg;
+      border: 1px solid $border;
+      border-radius: 3px;
+      padding: 1px 5px;
+      color: $accent;
+    }
+  }
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 0.85rem 0 1.25rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid $border-light;
+
+  &__label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $text-muted;
+    margin-right: 6px;
+  }
+}
+
+.archive-year {
+  padding: 1.5rem 0 0.5rem;
+
+  &__title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: $text-muted;
+    margin-bottom: 0.6rem;
+  }
+}
+
+.archive-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid $border-light;
+
+    &:last-child { border-bottom: none; }
+  }
+
+  &__date {
+    font-family: $font-mono;
+    font-size: 12px;
+    color: $text-muted;
+  }
+
+  &__title {
+    font-size: 15px;
+    color: $text-primary;
+    &:hover { color: $accent; text-decoration: none; }
+  }
+
+  &__cat {
+    font-size: 10px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: $accent;
+  }
+}
+
+.notes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid $border-light;
+    &:last-child { border-bottom: none; }
+  }
+
+  &__meta {
+    font-family: $font-mono;
+    font-size: 11px;
+    color: $text-muted;
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.5px;
+  }
+
+  &__title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    a { color: $text-primary; &:hover { color: $accent; text-decoration: none; } }
+  }
+
+  &__excerpt {
+    font-size: 14px;
+    color: $text-secondary;
+    line-height: 1.55;
+  }
+}
+
+.empty-state {
+  padding: 2rem 0;
+  color: $text-muted;
+  font-size: 14px;
+
+  &__hint {
+    margin-top: 0.5rem;
+    font-size: 13px;
+  }
+}
+
 .pagination {
   display: flex;
   justify-content: center;
