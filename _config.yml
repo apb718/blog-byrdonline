@@ -1,8 +1,9 @@
-title: alec.dev
+title: alec.byrdonline
 description: Infrastructure, Linux, and things worth writing down.
 author: Alec
 baseurl: ""
 url: ""
+domain: byrdonline
 
 # Build
 markdown: kramdown
