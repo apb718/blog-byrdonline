@@ -680,23 +680,12 @@
 
 .timeline-year {
   display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 1.25rem;
-  padding-bottom: 1.5rem;
+  grid-template-columns: 96px 1fr;
+  gap: 1.5rem;
+  padding-bottom: 0.75rem;
 
   &__rail {
-    position: relative;
     padding-top: 0.4rem;
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 3.4rem;
-      bottom: -1.5rem;
-      left: 100%;
-      width: 1px;
-      background: $border;
-    }
   }
 
   &__label {
@@ -707,30 +696,37 @@
     line-height: 1;
     letter-spacing: -0.5px;
     display: inline-block;
-    padding-right: 0.75rem;
-  }
-
-  &:last-child {
-    .timeline-year__rail::after { display: none; }
   }
 }
 
+// Events column owns the vertical rail; dots sit ON the rail.
 .timeline-events {
+  position: relative;
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
+
+  // The rail itself — a vertical 1px line running through the cluster.
+  &::before {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    bottom: 1rem;
+    left: 6px;
+    width: 1px;
+    background: $border;
+  }
 }
 
 .timeline-event {
   position: relative;
-  padding: 0.95rem 1.1rem 1rem 1.4rem;
+  padding: 0.95rem 1.2rem 1rem 2.25rem;
   background: $paper;
   border: 1px solid $border;
   border-radius: $radius-md;
-  margin-left: 1.25rem;
   transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
 
   &:hover {
@@ -739,29 +735,18 @@
     box-shadow: $shadow-soft;
   }
 
-  // Connector line on the left, anchored to the year rail
-  &::before {
-    content: '';
-    position: absolute;
-    left: -1.25rem;
-    top: 1.5rem;
-    width: 1.25rem;
-    height: 1px;
-    background: $border;
-  }
-
-  // Dot sits where the connector meets the card
+  // Dot — left edge sits ON the rail (rail is at x=6, dot center at x=6).
   &__dot {
     position: absolute;
-    left: -1.65rem;
-    top: 1.15rem;
+    left: -1px;
+    top: 1.05rem;
     width: 14px;
     height: 14px;
     border-radius: 50%;
     background: $accent;
     border: 3px solid $bg;
     box-shadow: 0 0 0 1px $border;
-    z-index: 1;
+    z-index: 2;
   }
 
   &__body {
@@ -885,19 +870,9 @@
     grid-template-columns: 1fr;
     gap: 0.5rem;
 
-    &__rail {
-      &::after { display: none; }
-    }
-
     &__label {
       font-size: 1.5rem;
     }
-  }
-
-  .timeline-event {
-    margin-left: 0.5rem;
-    &::before { display: none; }
-    &__dot { left: -0.85rem; top: 1.25rem; }
   }
 }
 
