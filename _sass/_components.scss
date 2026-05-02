@@ -520,6 +520,157 @@
   }
 }
 
+// ─── About page: status card, callout, credentials, colophon ────────────────
+
+.status-card {
+  background: $paper;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-soft;
+  padding: 1.1rem 1.4rem;
+  margin: 0 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+
+  &__row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+
+  &__dot {
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $accent-mid;
+    box-shadow: 0 0 0 0 rgba(92, 140, 98, 0.55);
+    align-self: center;
+    animation: status-pulse 2.4s ease-in-out infinite;
+  }
+
+  &__label {
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: $text-muted;
+    flex: 0 0 auto;
+    min-width: 92px;
+  }
+
+  &__value {
+    font-family: $font-display;
+    font-size: 15px;
+    color: $text-primary;
+    em { font-style: italic; }
+  }
+}
+
+@keyframes status-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(92, 140, 98, 0.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(92, 140, 98, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(92, 140, 98, 0); }
+}
+
+.callout {
+  margin: 1.75rem 0 2rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(180deg, $hero-bg 0%, $paper 100%);
+  border-left: 3px solid $accent;
+  border-radius: 0 $radius-md $radius-md 0;
+  position: relative;
+
+  p {
+    font-family: $font-display;
+    font-size: 1.2rem;
+    line-height: 1.45;
+    font-style: italic;
+    color: $text-primary;
+    margin: 0 0 0.5rem;
+  }
+
+  &__link {
+    font-family: $font-mono;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $accent;
+    text-decoration: none;
+    border-bottom: none !important;
+    &:hover { color: $accent-mid; }
+  }
+}
+
+.credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0.75rem 0 0;
+}
+
+.cred {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 16px;
+  background: $paper;
+  border: 1px solid $border;
+  border-radius: $radius-sm;
+  border-left: 3px solid $accent;
+  min-width: 180px;
+
+  &--pending {
+    border-left-color: $accent-warm;
+    background: repeating-linear-gradient(
+      135deg,
+      $paper,
+      $paper 8px,
+      #f4f3ee 8px,
+      #f4f3ee 16px
+    );
+  }
+
+  &__name {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 14px;
+    color: $text-primary;
+    letter-spacing: 0.2px;
+  }
+
+  &__note {
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 0.8px;
+    color: $text-muted;
+    text-transform: uppercase;
+  }
+}
+
+.colophon {
+  margin-top: 2.5rem;
+  padding: 1rem 1.25rem;
+  border-top: 1px dashed $border;
+  font-family: $font-mono;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  color: $text-muted;
+  line-height: 1.7;
+
+  a {
+    color: $text-secondary !important;
+    border-bottom: 1px solid $border !important;
+    &:hover {
+      color: $accent !important;
+      border-bottom-color: $accent !important;
+    }
+  }
+}
+
 // ─── Filter row (writing index) ──────────────────────────────────────────────
 
 .filter-row {
