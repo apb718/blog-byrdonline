@@ -4,7 +4,9 @@ layout: default
 <div class="container">
   <article class="post">
     <header class="post__header">
-      <div class="post__tag">{{ page.categories | first | default: page.tags | first }}</div>
+      {% assign post_cat = page.categories | first %}
+      {% unless post_cat %}{% assign post_cat = page.tags | first %}{% endunless %}
+      {% if post_cat %}<div class="post__tag">{{ post_cat }}</div>{% endif %}
       <h1 class="post__title">{{ page.title }}</h1>
       <div class="post__meta">
         {{ page.date | date: "%B %-d, %Y" }}

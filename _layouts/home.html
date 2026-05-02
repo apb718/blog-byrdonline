@@ -6,29 +6,62 @@ layout: default
     <p class="hero__label">Personal blog</p>
     <h1 class="hero__title">{{ site.description }}</h1>
     <p class="hero__sub">Notes on HPC, Ansible, homelab experiments, and the occasional rabbit hole.</p>
-    <div class="hero__actions">
-      <a class="btn btn--primary" href="{{ '/writing/' | relative_url }}">Read writing</a>
-      <a class="btn btn--ghost" href="{{ '/about/' | relative_url }}">About</a>
-    </div>
   </div>
 </div>
 
-<div class="container--wide">
+<div class="container">
+  {% assign posts = paginator.posts %}
+  {% assign featured = posts | first %}
+
+  {% if featured %}
   <section class="section">
     <header class="section__header">
       <h2 class="section__title">Latest</h2>
       <a class="section__link" href="{{ '/writing/' | relative_url }}">All writing &rarr;</a>
     </header>
-    <div class="posts-grid">
-      {% for post in paginator.posts %}
-      <article class="post-card">
-        <div class="post-card__tag">{{ post.categories | first | default: post.tags | first }}</div>
-        <h2 class="post-card__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-        <p class="post-card__excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
-        <div class="post-card__meta">{{ post.date | date: "%b %-d, %Y" }} · {{ post.content | number_of_words | divided_by: 200 | plus: 1 }} min</div>
-      </article>
+
+    <a class="featured" href="{{ featured.url | relative_url }}">
+      <div class="featured__eyebrow">
+        {% assign feat_cat = featured.categories | first %}
+        {% unless feat_cat %}{% assign feat_cat = featured.tags | first %}{% endunless %}
+        {% if feat_cat %}<span class="featured__cat">{{ feat_cat }}</span>{% endif %}
+        <span class="featured__meta">{{ featured.date | date: "%B %-d, %Y" }} · {{ featured.content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+      </div>
+      <h3 class="featured__title">{{ featured.title }}</h3>
+      <p class="featured__excerpt">
+        {%- if featured.description -%}
+          {{ featured.description }}
+        {%- else -%}
+          {{ featured.excerpt | strip_html | truncatewords: 40 }}
+        {%- endif -%}
+      </p>
+      <span class="featured__more">Read &rarr;</span>
+    </a>
+
+    {% if posts.size > 1 %}
+    <ul class="post-list">
+      {% for post in posts offset:1 %}
+      <li class="post-list__item">
+        <a class="post-list__link" href="{{ post.url | relative_url }}">
+          <div class="post-list__meta">
+            {% assign p_cat = post.categories | first %}
+            {% unless p_cat %}{% assign p_cat = post.tags | first %}{% endunless %}
+            {% if p_cat %}<span class="post-list__cat">{{ p_cat }}</span><span class="dot">·</span>{% endif %}
+            <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+            <span class="dot">·</span>
+            <span>{{ post.content | number_of_words | divided_by: 200 | plus: 1 }} min</span>
+          </div>
+          <h3 class="post-list__title">{{ post.title }}</h3>
+          {% if post.description %}
+            <p class="post-list__excerpt">{{ post.description }}</p>
+          {% else %}
+            <p class="post-list__excerpt">{{ post.excerpt | strip_html | truncatewords: 22 }}</p>
+          {% endif %}
+        </a>
+      </li>
       {% endfor %}
-    </div>
+    </ul>
+    {% endif %}
 
     {% if paginator.total_pages > 1 %}
     <nav class="pagination">
@@ -46,6 +79,7 @@ layout: default
     </nav>
     {% endif %}
   </section>
+  {% endif %}
 
   {% assign all_cats = "" | split: "" %}
   {% for post in site.posts %}
@@ -63,17 +97,15 @@ layout: default
       <h2 class="section__title">Topics</h2>
       <span class="section__sub">Browse by category</span>
     </header>
-    <ul class="topics-list">
+    <div class="topics-row">
       {% for cat in all_cats %}
         {% assign cat_posts = site.posts | where: "categories", cat %}
-        <li class="topics-list__item">
-          <a class="topics-list__link" href="{{ '/writing/' | relative_url }}#{{ cat | slugify }}">
-            <span class="topics-list__name">{{ cat }}</span>
-            <span class="topics-list__count">{{ cat_posts.size }} post{% if cat_posts.size != 1 %}s{% endif %}</span>
-          </a>
-        </li>
+        <a class="topic-pill" href="{{ '/writing/' | relative_url }}#{{ cat | slugify }}">
+          <span>{{ cat }}</span>
+          <span class="topic-pill__count">{{ cat_posts.size }}</span>
+        </a>
       {% endfor %}
-    </ul>
+    </div>
   </section>
   {% endif %}
 </div>
