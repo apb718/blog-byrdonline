@@ -4,8 +4,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Home · alec.byrdonline</title>
 <meta name="description" content="Infrastructure, Linux, and things worth writing down.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/main.css">
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="alec.byrdonline" />
+<link type="application/atom+xml" rel="alternate" href="/feed.xml" title="alec.byrdonline" />
 <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Home | alec.byrdonline</title>
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -14,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Infrastructure, Linux, and things worth writing down." />
 <meta property="og:description" content="Infrastructure, Linux, and things worth writing down." />
-<link rel="canonical" href="http://localhost:4000/" />
-<meta property="og:url" content="http://localhost:4000/" />
+<link rel="canonical" href="/" />
+<meta property="og:url" content="/" />
 <meta property="og:site_name" content="alec.byrdonline" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Home" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Alec"},"description":"Infrastructure, Linux, and things worth writing down.","headline":"Home","name":"alec.byrdonline","url":"http://localhost:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Alec"},"description":"Infrastructure, Linux, and things worth writing down.","headline":"Home","name":"alec.byrdonline","url":"/"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -40,41 +43,58 @@
     <p class="hero__label">Personal blog</p>
     <h1 class="hero__title">Infrastructure, Linux, and things worth writing down.</h1>
     <p class="hero__sub">Notes on HPC, Ansible, homelab experiments, and the occasional rabbit hole.</p>
-    <div class="hero__actions">
-      <a class="btn btn--primary" href="/writing/">Read writing</a>
-      <a class="btn btn--ghost" href="/about/">About</a>
-    </div>
   </div>
 </div>
 
-<div class="container--wide">
+<div class="container">
+  
+  
+
+  
   <section class="section">
     <header class="section__header">
       <h2 class="section__title">Latest</h2>
       <a class="section__link" href="/writing/">All writing &rarr;</a>
     </header>
-    <div class="posts-grid">
+
+    <a class="featured" href="/2026/05/01/my-approach/">
+      <div class="featured__eyebrow">
+        
+        
+        <span class="featured__cat">Linux</span>
+        <span class="featured__meta">May 1, 2026 · 4 min read</span>
+      </div>
+      <h3 class="featured__title">My Approach to Self-Study: A Manifesto(?)</h3>
+      <p class="featured__excerpt">My methodology, goals, and aspirations in self-study and career development, circa the time of writing.</p>
+      <span class="featured__more">Read &rarr;</span>
+    </a>
+
+    
+    <ul class="post-list">
       
-      <article class="post-card">
-        <div class="post-card__tag"></div>
-        <h2 class="post-card__title"><a href="/2026/05/01/my-approach/">My Approach to Self-Study: A Manifesto(?)</a></h2>
-        <p class="post-card__excerpt">AI is bad at systems work. That fact is the basis of my career bet.
-</p>
-        <div class="post-card__meta">May 1, 2026 · 4 min</div>
-      </article>
+      <li class="post-list__item">
+        <a class="post-list__link" href="/2026/04/12/selinux-contexts-ansible/">
+          <div class="post-list__meta">
+            
+            
+            <span class="post-list__cat">Ansible</span><span class="dot">·</span>
+            <span>Apr 12, 2026</span>
+            <span class="dot">·</span>
+            <span>1 min</span>
+          </div>
+          <h3 class="post-list__title">Managing SELinux contexts with rhel-system-roles</h3>
+          
+            <p class="post-list__excerpt">Walking through sefcontext tasks, idempotency patterns, and where the documentation actually lives.</p>
+          
+        </a>
+      </li>
       
-      <article class="post-card">
-        <div class="post-card__tag"></div>
-        <h2 class="post-card__title"><a href="/2026/04/12/selinux-contexts-ansible/">Managing SELinux contexts with rhel-system-roles</a></h2>
-        <p class="post-card__excerpt">Getting SELinux file contexts right in Ansible is one of those things that looks simple until it isn’t.
-</p>
-        <div class="post-card__meta">Apr 12, 2026 · 1 min</div>
-      </article>
-      
-    </div>
+    </ul>
+    
 
     
   </section>
+  
 
   
   
@@ -86,32 +106,28 @@
       <h2 class="section__title">Topics</h2>
       <span class="section__sub">Browse by category</span>
     </header>
-    <ul class="topics-list">
+    <div class="topics-row">
       
         
-        <li class="topics-list__item">
-          <a class="topics-list__link" href="/writing/#ansible">
-            <span class="topics-list__name">Ansible</span>
-            <span class="topics-list__count">1 post</span>
-          </a>
-        </li>
+        <a class="topic-pill" href="/writing/#ansible">
+          <span>Ansible</span>
+          <span class="topic-pill__count">1</span>
+        </a>
       
         
-        <li class="topics-list__item">
-          <a class="topics-list__link" href="/writing/#linux">
-            <span class="topics-list__name">Linux</span>
-            <span class="topics-list__count">1 post</span>
-          </a>
-        </li>
+        <a class="topic-pill" href="/writing/#linux">
+          <span>Linux</span>
+          <span class="topic-pill__count">1</span>
+        </a>
       
-    </ul>
+    </div>
   </section>
   
 </div>
 
   <footer class="site-footer container--wide">
-  <span>alec.byrdonline · byrdonline</span>
-  <a href="/feed.xml">rss</a>
+  <span class="site-footer__brand">alec.byrdonline</span>
+  <a href="/feed.xml">RSS</a>
 </footer>
 
 </body>

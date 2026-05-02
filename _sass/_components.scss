@@ -1,55 +1,253 @@
+// ─── Buttons ──────────────────────────────────────────────────────────────────
+
 .btn {
-  display: inline-block;
-  padding: 9px 20px;
-  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: $radius-sm;
   font-size: 13px;
   font-weight: 500;
+  letter-spacing: 0.2px;
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   font-family: $font-body;
   text-decoration: none;
+  transition: all 0.15s ease;
 
   &--primary {
     background: $accent;
     color: #fff;
-    &:hover { background: $accent-mid; text-decoration: none; }
+    &:hover {
+      background: $accent-mid;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
   }
 
   &--ghost {
     background: transparent;
     color: $accent;
-    border: 1px solid $accent;
+    border-color: $accent;
     &:hover { background: $hero-bg; }
   }
 }
 
+// ─── Section primitives (used on home + page indexes) ────────────────────────
+
+.section {
+  padding: 3rem 0 1rem;
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid $border;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 56px;
+      height: 1px;
+      background: $accent;
+    }
+  }
+
+  &__title {
+    font-family: $font-mono;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $accent;
+  }
+
+  &__link, &__sub {
+    font-size: 12px;
+    color: $text-muted;
+    font-family: $font-mono;
+    letter-spacing: 0.5px;
+  }
+
+  &__link:hover { color: $accent; text-decoration: none; }
+}
+
+// ─── Home: featured post + recent list ───────────────────────────────────────
+
+.featured {
+  display: block;
+  padding: 1.75rem 1.75rem 2rem;
+  background: $paper;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-soft;
+  margin-bottom: 2rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+
+  &:hover {
+    border-color: $accent-light;
+    text-decoration: none;
+    transform: translateY(-2px);
+    .featured__title { color: $accent; }
+  }
+
+  &__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: $accent;
+    margin-bottom: 1rem;
+
+    span:first-child::after {
+      content: '·';
+      margin-left: 10px;
+      color: $border;
+    }
+  }
+
+  &__cat {
+    color: $accent;
+    font-weight: 500;
+  }
+
+  &__meta {
+    color: $text-muted;
+    font-weight: 400;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+    color: $text-primary;
+    margin-bottom: 0.75rem;
+    transition: color 0.15s;
+  }
+
+  &__excerpt {
+    font-size: 15px;
+    line-height: 1.65;
+    color: $text-secondary;
+    margin-bottom: 1rem;
+  }
+
+  &__more {
+    font-family: $font-mono;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: $accent;
+  }
+}
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    display: block;
+    padding: 1.25rem 0.25rem;
+    border-bottom: 1px solid $border-light;
+    transition: padding 0.15s;
+
+    &:hover {
+      padding-left: 0.75rem;
+      .post-list__title { color: $accent; }
+    }
+
+    &:last-child { border-bottom: none; }
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    &:hover { text-decoration: none; }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: $font-mono;
+    font-size: 11px;
+    letter-spacing: 0.6px;
+    color: $text-muted;
+    margin-bottom: 0.4rem;
+
+    .dot { color: $border; }
+  }
+
+  &__cat {
+    color: $accent;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: $text-primary;
+    margin-bottom: 0.35rem;
+    transition: color 0.15s;
+  }
+
+  &__excerpt {
+    font-size: 14px;
+    line-height: 1.55;
+    color: $text-secondary;
+  }
+}
+
+// ─── Old card grid kept for any leftover usage; restyled lightly ─────────────
+
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  border-top: 1px solid $border;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+  background: $border;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  overflow: hidden;
 }
 
 .post-card {
   padding: 1.5rem;
-  border-right: 1px solid $border;
-  border-bottom: 1px solid $border;
-  background: $bg;
+  background: $paper;
   transition: background 0.15s;
   &:hover { background: $hero-bg; }
 
   &__tag {
+    font-family: $font-mono;
     font-size: 10px;
-    letter-spacing: 1px;
+    letter-spacing: 1.4px;
     text-transform: uppercase;
     font-weight: 500;
     color: $accent;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.65rem;
+    min-height: 14px;
   }
 
   &__title {
-    font-size: 15px;
+    font-family: $font-display;
+    font-size: 1.05rem;
     font-weight: 500;
-    line-height: 1.35;
+    line-height: 1.3;
     color: $text-primary;
     margin-bottom: 0.5rem;
     a { color: inherit; &:hover { color: $accent; text-decoration: none; } }
@@ -63,14 +261,53 @@
   }
 
   &__meta {
+    font-family: $font-mono;
     font-size: 11px;
     color: $text-muted;
-    opacity: 0.7;
+    letter-spacing: 0.4px;
   }
 }
 
+// ─── Topics row (home + writing) ─────────────────────────────────────────────
+
+.topics-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0.5rem 0 0.25rem;
+}
+
+.topic-pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: $paper;
+  border: 1px solid $border;
+  color: $text-secondary;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.15s;
+
+  &__count {
+    font-family: $font-mono;
+    font-size: 11px;
+    color: $text-muted;
+  }
+
+  &:hover {
+    background: $hero-bg;
+    border-color: $accent-light;
+    color: $accent;
+    text-decoration: none;
+  }
+}
+
+// ─── Single post (kept light — user is happy with post rendering) ───────────
+
 .post {
-  padding: 3rem 0;
+  padding: 3rem 0 2rem;
 
   &__header {
     margin-bottom: 2.5rem;
@@ -79,32 +316,42 @@
   }
 
   &__tag {
+    font-family: $font-mono;
     font-size: 11px;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     color: $accent;
     font-weight: 500;
     margin-bottom: 0.75rem;
+    min-height: 14px;
   }
 
   &__title {
-    font-size: 2rem;
+    font-family: $font-display;
+    font-size: 2.1rem;
     font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.4px;
+    line-height: 1.18;
+    letter-spacing: -0.5px;
     margin-bottom: 0.75rem;
   }
 
-  &__meta { font-size: 13px; color: $text-muted; }
+  &__meta {
+    font-family: $font-mono;
+    font-size: 12px;
+    color: $text-muted;
+    letter-spacing: 0.4px;
+  }
 
   &__content {
     h2, h3, h4 {
+      font-family: $font-display;
       font-weight: 500;
       margin: 2rem 0 0.75rem;
       line-height: 1.3;
+      letter-spacing: -0.2px;
     }
-    h2 { font-size: 1.4rem; }
-    h3 { font-size: 1.15rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
 
     p { margin-bottom: 1.25rem; }
 
@@ -151,8 +398,11 @@
   }
 }
 
+// ─── Tag badges (post header) ────────────────────────────────────────────────
+
 .tag-badge {
   display: inline-block;
+  font-family: $font-mono;
   font-size: 10px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
@@ -167,129 +417,96 @@
   &:hover { background: $border; text-decoration: none; }
 }
 
-.hero__actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 0.25rem;
-}
-
-.section {
-  padding: 2.5rem 0 1rem;
-
-  &__header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid $border;
-  }
-
-  &__title {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: $text-secondary;
-  }
-
-  &__link, &__sub {
-    font-size: 12px;
-    color: $text-muted;
-  }
-
-  &__link:hover { color: $accent; text-decoration: none; }
-}
-
-.topics-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 0;
-  border-top: 1px solid $border;
-  border-left: 1px solid $border;
-
-  &__item { margin: 0; }
-
-  &__link {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.85rem 1rem;
-    border-right: 1px solid $border;
-    border-bottom: 1px solid $border;
-    color: $text-primary;
-    background: $bg;
-    transition: background 0.15s;
-    text-decoration: none;
-
-    &:hover { background: $hero-bg; text-decoration: none; }
-  }
-
-  &__name {
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: capitalize;
-  }
-
-  &__count {
-    font-size: 11px;
-    color: $text-muted;
-    letter-spacing: 0.5px;
-  }
-}
+// ─── Static page layout (writing, notes, about) ──────────────────────────────
 
 .page {
-  padding: 3rem 0;
+  padding: 3.5rem 0 1rem;
 
   &__header {
-    margin-bottom: 2rem;
-    padding-bottom: 1.25rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
     border-bottom: 1px solid $border;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 64px;
+      height: 1px;
+      background: $accent;
+    }
   }
 
   &__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: $font-mono;
     font-size: 11px;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: $accent;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.85rem;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: $accent;
+    }
   }
 
   &__title {
-    font-size: 2rem;
+    font-family: $font-display;
+    font-size: clamp(1.85rem, 3.6vw, 2.4rem);
     font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.4px;
-    margin-bottom: 0.5rem;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.6rem;
   }
 
   &__subtitle {
-    font-size: 15px;
+    font-family: $font-display;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.5;
     color: $text-secondary;
-    max-width: 580px;
+    max-width: 620px;
+    font-style: italic;
   }
 
   &__content {
+    > :first-child { margin-top: 0; }
+
     h2 {
-      font-size: 1.25rem;
+      font-family: $font-display;
+      font-size: 1.35rem;
       font-weight: 500;
-      margin: 2rem 0 0.75rem;
+      margin: 2.25rem 0 0.75rem;
+      letter-spacing: -0.2px;
     }
     h3 {
-      font-size: 1.05rem;
+      font-family: $font-display;
+      font-size: 1.1rem;
       font-weight: 500;
       margin: 1.5rem 0 0.5rem;
     }
-    p { margin-bottom: 1.1rem; }
+    p { margin-bottom: 1.15rem; line-height: 1.65; }
     ul, ol {
       margin: 0 0 1.25rem 1.5rem;
-      li { margin-bottom: 0.35rem; }
+      li { margin-bottom: 0.4rem; }
+    }
+    a {
+      color: $accent;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+      &:hover {
+        text-decoration: none;
+        border-bottom-color: $accent;
+      }
     }
     code {
       font-family: $font-mono;
@@ -303,33 +520,49 @@
   }
 }
 
+// ─── Filter row (writing index) ──────────────────────────────────────────────
+
 .filter-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
-  padding: 0.85rem 0 1.25rem;
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid $border-light;
+  gap: 8px;
+  padding: 0.25rem 0 1.5rem;
+  margin: 0.5rem 0 2rem;
+  border-bottom: 1px dashed $border-light;
 
   &__label {
-    font-size: 11px;
-    letter-spacing: 1px;
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 1.6px;
     text-transform: uppercase;
     color: $text-muted;
-    margin-right: 6px;
+    margin-right: 4px;
   }
 }
 
+// ─── Archive (year-grouped writing list) ─────────────────────────────────────
+
 .archive-year {
-  padding: 1.5rem 0 0.5rem;
+  padding: 1.75rem 0 0.5rem;
 
   &__title {
-    font-size: 0.85rem;
+    font-family: $font-display;
+    font-size: 2.2rem;
     font-weight: 500;
-    letter-spacing: 1.5px;
-    color: $text-muted;
-    margin-bottom: 0.6rem;
+    color: $border;
+    line-height: 1;
+    margin-bottom: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: $border-light;
+    }
   }
 }
 
@@ -340,11 +573,17 @@
 
   &__item {
     display: grid;
-    grid-template-columns: 72px 1fr auto;
-    gap: 1rem;
+    grid-template-columns: 80px 1fr auto;
+    gap: 1.25rem;
     align-items: baseline;
-    padding: 0.6rem 0;
+    padding: 0.85rem 0.25rem;
     border-bottom: 1px solid $border-light;
+    transition: padding 0.15s, background 0.15s;
+
+    &:hover {
+      padding-left: 0.75rem;
+      .archive-list__title { color: $accent; }
+    }
 
     &:last-child { border-bottom: none; }
   }
@@ -353,21 +592,28 @@
     font-family: $font-mono;
     font-size: 12px;
     color: $text-muted;
+    letter-spacing: 0.3px;
   }
 
   &__title {
-    font-size: 15px;
+    font-family: $font-display;
+    font-size: 1.05rem;
+    font-weight: 500;
     color: $text-primary;
+    transition: color 0.15s;
     &:hover { color: $accent; text-decoration: none; }
   }
 
   &__cat {
+    font-family: $font-mono;
     font-size: 10px;
-    letter-spacing: 0.8px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     color: $accent;
   }
 }
+
+// ─── Notes index ─────────────────────────────────────────────────────────────
 
 .notes-list {
   list-style: none;
@@ -375,7 +621,7 @@
   padding: 0;
 
   &__item {
-    padding: 1.25rem 0;
+    padding: 1.5rem 0;
     border-bottom: 1px solid $border-light;
     &:last-child { border-bottom: none; }
   }
@@ -384,48 +630,74 @@
     font-family: $font-mono;
     font-size: 11px;
     color: $text-muted;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.4rem;
     letter-spacing: 0.5px;
   }
 
   &__title {
-    font-size: 1.05rem;
+    font-family: $font-display;
+    font-size: 1.15rem;
     font-weight: 500;
     margin-bottom: 0.4rem;
-    a { color: $text-primary; &:hover { color: $accent; text-decoration: none; } }
+    a {
+      color: $text-primary;
+      &:hover { color: $accent; text-decoration: none; }
+    }
   }
 
   &__excerpt {
     font-size: 14px;
     color: $text-secondary;
-    line-height: 1.55;
+    line-height: 1.6;
   }
 }
 
+// ─── Empty state ─────────────────────────────────────────────────────────────
+
 .empty-state {
-  padding: 2rem 0;
+  padding: 2.5rem 1.5rem;
+  background: $paper;
+  border: 1px dashed $border;
+  border-radius: $radius-md;
+  text-align: center;
   color: $text-muted;
   font-size: 14px;
 
+  p { margin-bottom: 0.5rem; }
   &__hint {
-    margin-top: 0.5rem;
     font-size: 13px;
+    color: $text-muted;
+    line-height: 1.6;
+  }
+  code {
+    font-family: $font-mono;
+    background: $hero-bg;
+    border: 1px solid $border;
+    border-radius: 3px;
+    padding: 1px 5px;
+    color: $accent;
+    font-size: 12px;
   }
 }
+
+// ─── Pagination ──────────────────────────────────────────────────────────────
 
 .pagination {
   display: flex;
   justify-content: center;
   gap: 8px;
-  padding: 2rem 0;
+  padding: 2.5rem 0 1rem;
   font-size: 13px;
+  font-family: $font-mono;
+  letter-spacing: 0.4px;
 
   a, span {
     padding: 6px 14px;
     border: 1px solid $border;
-    border-radius: 4px;
+    border-radius: $radius-sm;
     color: $text-secondary;
     text-decoration: none;
+    background: $paper;
   }
 
   a:hover { border-color: $accent; color: $accent; }

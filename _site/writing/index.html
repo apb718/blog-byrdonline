@@ -4,8 +4,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Writing · alec.byrdonline</title>
 <meta name="description" content="Infrastructure, Linux, and things worth writing down.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/main.css">
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="alec.byrdonline" />
+<link type="application/atom+xml" rel="alternate" href="/feed.xml" title="alec.byrdonline" />
 <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Writing | alec.byrdonline</title>
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -14,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Infrastructure, Linux, and things worth writing down." />
 <meta property="og:description" content="Infrastructure, Linux, and things worth writing down." />
-<link rel="canonical" href="http://localhost:4000/writing/" />
-<meta property="og:url" content="http://localhost:4000/writing/" />
+<link rel="canonical" href="/writing/" />
+<meta property="og:url" content="/writing/" />
 <meta property="og:site_name" content="alec.byrdonline" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Writing" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Alec"},"description":"Infrastructure, Linux, and things worth writing down.","headline":"Writing","url":"http://localhost:4000/writing/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Alec"},"description":"Infrastructure, Linux, and things worth writing down.","headline":"Writing","url":"/writing/"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -40,7 +43,7 @@
     <header class="page__header">
       <div class="page__label">Archive</div>
       <h1 class="page__title">Writing</h1>
-      <p class="page__subtitle">Longer-form posts, organized by year. Filter by topic to narrow things down.</p>
+      <p class="page__subtitle">Longer-form posts, organized by year. Jump to a topic to narrow things down.</p>
     </header>
     <div class="page__content">
       
@@ -49,11 +52,19 @@
 
 
 <div class="filter-row">
-  <span class="filter-row__label">Topics:</span>
+  <span class="filter-row__label">Topics</span>
   
-    <a class="tag-badge" href="#ansible">Ansible</a>
+    
+    <a class="topic-pill" href="#ansible">
+      <span>Ansible</span>
+      <span class="topic-pill__count">1</span>
+    </a>
   
-    <a class="tag-badge" href="#linux">Linux</a>
+    
+    <a class="topic-pill" href="#linux">
+      <span>Linux</span>
+      <span class="topic-pill__count">1</span>
+    </a>
   
 </div>
 
@@ -64,20 +75,18 @@
   <h2 class="archive-year__title">2026</h2>
   <ul class="archive-list">
     
-    <li class="archive-list__item">
+    <li class="archive-list__item" id="linux">
       <span class="archive-list__date">May 1</span>
       <a class="archive-list__title" href="/2026/05/01/my-approach/">My Approach to Self-Study: A Manifesto(?)</a>
       
-        <span class="archive-list__cat">Linux</span>
-      
+      <span class="archive-list__cat">Linux</span>
     </li>
     
-    <li class="archive-list__item">
+    <li class="archive-list__item" id="ansible">
       <span class="archive-list__date">Apr 12</span>
       <a class="archive-list__title" href="/2026/04/12/selinux-contexts-ansible/">Managing SELinux contexts with rhel-system-roles</a>
       
-        <span class="archive-list__cat">Ansible</span>
-      
+      <span class="archive-list__cat">Ansible</span>
     </li>
     
   </ul>
@@ -91,8 +100,8 @@
 </div>
 
   <footer class="site-footer container--wide">
-  <span>alec.byrdonline · byrdonline</span>
-  <a href="/feed.xml">rss</a>
+  <span class="site-footer__brand">alec.byrdonline</span>
+  <a href="/feed.xml">RSS</a>
 </footer>
 
 </body>

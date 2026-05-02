@@ -2,7 +2,7 @@
 layout: page
 title: Writing
 label: Archive
-subtitle: Longer-form posts, organized by year. Filter by topic to narrow things down.
+subtitle: Longer-form posts, organized by year. Jump to a topic to narrow things down.
 permalink: /writing/
 ---
 
@@ -18,9 +18,13 @@ permalink: /writing/
 
 {% if categories.size > 0 %}
 <div class="filter-row">
-  <span class="filter-row__label">Topics:</span>
+  <span class="filter-row__label">Topics</span>
   {% for cat in categories %}
-    <a class="tag-badge" href="#{{ cat | slugify }}">{{ cat }}</a>
+    {% assign cat_count = site.posts | where: "categories", cat | size %}
+    <a class="topic-pill" href="#{{ cat | slugify }}">
+      <span>{{ cat }}</span>
+      <span class="topic-pill__count">{{ cat_count }}</span>
+    </a>
   {% endfor %}
 </div>
 {% endif %}
@@ -31,12 +35,11 @@ permalink: /writing/
   <h2 class="archive-year__title">{{ year_group.name }}</h2>
   <ul class="archive-list">
     {% for post in year_group.items %}
-    <li class="archive-list__item">
+    <li class="archive-list__item" id="{{ post.categories | first | slugify }}">
       <span class="archive-list__date">{{ post.date | date: "%b %-d" }}</span>
       <a class="archive-list__title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      {% if post.categories.size > 0 %}
-        <span class="archive-list__cat">{{ post.categories | first }}</span>
-      {% endif %}
+      {% assign a_cat = post.categories | first %}
+      {% if a_cat %}<span class="archive-list__cat">{{ a_cat }}</span>{% endif %}
     </li>
     {% endfor %}
   </ul>
@@ -44,5 +47,7 @@ permalink: /writing/
 {% endfor %}
 
 {% if site.posts.size == 0 %}
-<p class="empty-state">No posts yet. Check back soon.</p>
+<div class="empty-state">
+  <p>No posts yet. Check back soon.</p>
+</div>
 {% endif %}

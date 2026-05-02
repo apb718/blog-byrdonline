@@ -2,7 +2,7 @@
   background: $nav-bg;
   border-bottom: 1px solid $nav-border;
   padding: 0 2rem;
-  height: 56px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,7 +12,8 @@
 
   .brand {
     color: $nav-text;
-    font-size: 17px;
+    font-family: $font-display;
+    font-size: 19px;
     font-weight: 500;
     letter-spacing: -0.3px;
     text-decoration: none;
@@ -21,68 +22,133 @@
 
   .nav-links {
     display: flex;
-    gap: 24px;
+    gap: 28px;
+
     a {
+      position: relative;
       color: $nav-text;
       font-size: 13px;
-      opacity: 0.7;
+      letter-spacing: 0.3px;
+      opacity: 0.72;
       text-decoration: none;
-      &:hover { opacity: 1; }
+      padding: 4px 0;
+      transition: opacity 0.15s;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: $accent-light;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.2s ease;
+      }
+
+      &:hover {
+        opacity: 1;
+        text-decoration: none;
+        &::after { transform: scaleX(1); }
+      }
     }
   }
 }
 
 .container {
-  max-width: 860px;
+  max-width: 760px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
 .container--wide {
-  max-width: 1100px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.75rem;
 }
 
 .hero {
-  background: $hero-bg;
+  background: linear-gradient(180deg, $hero-bg 0%, #f1f3ed 100%);
   border-bottom: 1px solid $hero-border;
-  padding: 3.5rem 2rem 2.5rem;
+  padding: 4rem 2rem 3.25rem;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, $accent-light 50%, transparent 100%);
+    opacity: 0.5;
+  }
 
   &__label {
+    font-family: $font-mono;
     font-size: 11px;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: $text-muted;
-    margin-bottom: 0.75rem;
+    color: $accent;
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: $accent;
+    }
   }
 
   &__title {
-    font-size: 2rem;
+    font-family: $font-display;
+    font-size: clamp(1.85rem, 4vw, 2.6rem);
     font-weight: 500;
-    line-height: 1.25;
-    letter-spacing: -0.5px;
+    line-height: 1.15;
+    letter-spacing: -0.6px;
     color: $text-primary;
-    max-width: 540px;
+    max-width: 620px;
     margin-bottom: 1rem;
   }
 
   &__sub {
-    font-size: 15px;
+    font-size: 16px;
     color: $text-secondary;
-    max-width: 480px;
+    max-width: 520px;
+    line-height: 1.55;
     margin-bottom: 1.5rem;
   }
 }
 
 .site-footer {
   border-top: 1px solid $border;
-  padding: 2rem 1.5rem;
-  margin-top: 4rem;
+  padding: 2rem 1.75rem;
+  margin-top: 5rem;
   font-size: 13px;
   color: $text-muted;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  a { color: $text-muted; &:hover { color: $accent; } }
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  &__brand {
+    font-family: $font-display;
+    font-weight: 500;
+    color: $text-secondary;
+  }
+
+  a {
+    color: $text-muted;
+    font-family: $font-mono;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    &:hover { color: $accent; }
+  }
 }
