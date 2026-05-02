@@ -1,0 +1,51 @@
+# Timeline entries — newest first.
+#
+# Fields:
+#   year   — integer year (required)
+#   kind   — one of: role, cert, education, book, resource (controls dot color + eyebrow)
+#   title  — display title (required)
+#   note   — short qualifier shown beneath the title (optional)
+#   status — "in_progress" or "current" to mark live items (optional)
+#
+# Within a year, list newest first (top of the year cluster = most recent).
+
+- year: 2026
+  kind: cert
+  title: "RHCE — Red Hat Certified Engineer"
+  note: "Ansible automation focus"
+  status: in_progress
+
+- year: 2026
+  kind: book
+  title: "Systems Performance"
+  note: "Brendan Gregg — observability and performance fundamentals"
+  status: in_progress
+
+- year: 2026
+  kind: cert
+  title: "RHCSA — Red Hat Certified System Administrator"
+  note: "Perfect score"
+
+- year: 2025
+  kind: role
+  title: "Datacenter technician, market infrastructure"
+  note: "Broader systems exposure across networking, storage, virtualization"
+  status: current
+
+- year: 2025
+  kind: education
+  title: "Graduated college"
+
+- year: 2023
+  kind: role
+  title: "HFT colocation hardware technician"
+  note: "Latency-sensitive environments at colocation facilities"
+
+- year: 2022
+  kind: education
+  title: "Started college"
+
+- year: 2019
+  kind: cert
+  title: "CompTIA A+"
+  note: "Hardware fundamentals — the door opener"

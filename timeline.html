@@ -1,0 +1,49 @@
+---
+layout: page
+title: Timeline
+label: Path so far
+subtitle: Career, certifications, education, and what's on the desk — in rough chronological order.
+permalink: /timeline/
+---
+
+{% assign grouped = site.data.timeline | group_by: "year" %}
+{% assign sorted_groups = grouped | sort: "name" | reverse %}
+
+{% assign kind_labels = "role:Role,cert:Certification,education:Education,book:Reading,resource:Resource" | split: "," %}
+
+<div class="timeline">
+  {% for year_group in sorted_groups %}
+  <section class="timeline-year">
+    <div class="timeline-year__rail">
+      <span class="timeline-year__label">{{ year_group.name }}</span>
+    </div>
+    <ul class="timeline-events">
+      {% for ev in year_group.items %}
+      <li class="timeline-event timeline-event--{{ ev.kind }}{% if ev.status %} is-{{ ev.status }}{% endif %}">
+        <span class="timeline-event__dot" aria-hidden="true"></span>
+        <div class="timeline-event__body">
+          <span class="timeline-event__kind">
+            {%- case ev.kind -%}
+              {%- when "role" -%}Role
+              {%- when "cert" -%}Certification
+              {%- when "education" -%}Education
+              {%- when "book" -%}Reading
+              {%- when "resource" -%}Resource
+              {%- else -%}{{ ev.kind }}
+            {%- endcase -%}
+            {%- if ev.status == "in_progress" -%}<span class="timeline-event__status">In progress</span>{%- endif -%}
+            {%- if ev.status == "current" -%}<span class="timeline-event__status timeline-event__status--current">Current</span>{%- endif -%}
+          </span>
+          <h3 class="timeline-event__title">{{ ev.title }}</h3>
+          {% if ev.note %}<p class="timeline-event__note">{{ ev.note }}</p>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</div>
+
+<p class="timeline-footnote">
+  Updated as things change. The data lives in <code>_data/timeline.yml</code>.
+</p>
