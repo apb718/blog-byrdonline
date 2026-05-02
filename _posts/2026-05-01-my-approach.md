@@ -5,40 +5,44 @@ published: true
 date: 2026-05-01
 categories: [Linux]
 tags: [study]
-description: A quick parse through my methodology, goals, desires, and aspirations in self-study and career path circa the time of making this post. 
+description: My methodology, goals, and aspirations in self-study and career development, circa the time of writing.
 ---
 
-As I have begun my career path and journey through life post-grad I have found that there are some things that have bubbled up to the surface and where better to put that than this very blog!
+AI is bad at systems work. That fact is the basis of my career bet.
 
-## The Core of my Problem 
+Since graduating and starting my career I have noticed a gap. Generative AI can handle easy-to-moderate lookups, aggregate information well, and produce decent results in more "pure" software engineering tasks. But in systems administration it frequently gives overcomplicated solutions, presents methodology that no one would actually use in production, or just fails outright. In my testing with current frontier models, scripts generated for a data migration — including backups and restores — did not work and actively contributed to data loss. That is not a minor shortcoming.
 
-At the core of the modern era we are blessed as well as plagued with the gift of the internet.  Everything you could ever want at your fingertips, however as I (a modern day philospher) as well as your run of the mill TikTok influncer may note- the internet can really suck.  Between the incentive structures of media production, the dawn of the era of AI, and the ultimate shift in skills needed for the workforce my aim is to take my best guess as to what might work and how best to live a safe, secure, and fulfilling career.  My core issue is that in an era of AI it can be **incredibly** easy to offload learning and work to our AI overlords, and I am trying to get a strong foundation in these topics.  It may take a long time but ultimately I believe that in an era of Generative AI, the strongest skills will be the ones that aren't written down and are lodged in the minds of top practitioners in the field.  Among many reasons I find High Performance Computing (HPC) applications to be among the most interesting and ultimately I aim to be in the infrastrcture segment of the financial industry and this is my path to getting there. 
+I think the reason for this gap is structural. Systems knowledge lives in business contexts, runbooks, and tribal expertise. It is less likely to be published publicly, and when it is, it lacks the surrounding context of _why_ it was done that way. That makes it harder for models to learn from compared to the average software engineering task, where the code itself often tells the full story.
 
-## The Core Strategy 
+So my conclusion is simple: deep expertise in systems work is durable. The path forward is to learn modern tools, internalize best practices, and work alongside people doing this at a high level.
 
-From where I am at the #1 issue that I have noticed within my first year out of academia and entering into the workforce is just how easy decay happens and how quickly. During this time I had decided that I wanted to go all in on learning Linux. I got my RHCSA and within less than a month of earning and stopping review I had begun to decay.  This has lead my search to figure out my best way to retain. My main strategy right now is to use Anki to continue and maintain my learning with spaced repetition. 
+## Strategy
 
-## Where to look things up
+**Exist around a hyped space, not within it.** The modern tech landscape is dominated by trends. When I was in late high school, software engineering boomed — enrollment surged, bootcamps multiplied, and adjacent fields were neglected. Infrastructure felt left out. Roles like SRE, Systems Engineer, Systems Administrator, and anything in networking have been largely ignored by academia while the push went almost entirely toward SWE. That neglect is an opportunity.
 
-Right now there is a lot of different sources I am leaning on
+**Prioritize learning over finished products.** AI is a phenomenal learning tool, but it also enables shortcuts that erode actual skill. I have spent weeks working with specific tools only to realize I could not run simple commands without assistance. That was a wake-up call. I now follow a deliberate process:
 
-- Man Pages
-- Internet Forums
-- Textbooks 
-- AI 
+1. Think about where I might find the information myself — man pages, official docs, RFCs.
+2. If I cannot find it, ask AI _where_ to look, not _what the answer is_. The goal is a pointer to static, authoritative documentation.
+3. If I still cannot find appropriate documentation, ask for the approach and reverse-engineer how to locate it myself next time.
 
-Now as I have noted before the use of AI isn't exactly my highest enjoyment, but as the famed Atrioc approximately said "AI is the greatest learning tool in history" and I believe it.  It has the capacity to completely offload learning and thinking which is it's pitfall, but if you use it in a way to learn topics it can help with direction and ultimately understanding more complicated topics, breaking them down, pointing to resources, and assisting with analyzing analogies. In my opinion modern frontier models are approaching or at the state that they are the most concise way to accurately look up more abstract ideas.  I have found so far that topics like Interface Bonding aren't exactly a topic of booming discussion on the internet, and bieng able to break down the usecases and potential pitfalls as well as develop continuous study resources that work for me has been a great start.  
+I use Anki to retain where documentation lives and how to navigate it. This has been one of the most effective changes I have made.
 
-## What are my goals
+**Follow genuine interest.** I find Linux, HPC, and performance optimization deeply interesting. Setting up and managing environments is fulfilling to me in a way that writing CRUD applications is not. That matters, because this is a long road and motivation needs to come from somewhere real.
 
-Well to be honest there are a few paths that fall together 
+## Where I Have Been
 
-- Become a HPC Specialized Linux Systems Engineer
+- Earned my CompTIA A+ Certification
+- Worked as a technician on high-frequency trading servers at colocation facilities
+- Currently working as a datacenter technician on market infrastructure
+- Earned my RHCSA (Red Hat Certified Systems Administrator) with a perfect score
 
-This is a very difficult path as one thing I have noticed real quick is that the information online is a cliff. This quickly dips into what I consider to be something of a subgoal, but a goal in and of itself.
+Each of these built on the last. The A+ got me in the door. HFT hardware work taught me what latency-sensitive environments demand. The datacenter role gave me broader infrastructure exposure. The RHCSA formalized Linux fundamentals I had been building through all of it.
 
-- Get a job in HPC spaces as a Linux Systems Engineer
-This from where I am at looks like it will most likely take the form of one of the following
-- Big Tech/Hyperscaler Environment (Think Anthropic, OpenAI, MAG7)
-- HFT / Trading Environments (Think Jane Street, Jump, HRT, and many more firms)
-- HPC Research Settings (Think University Research Clusters)
+## Where I Am Going
+
+Near term, I am finishing my RHCE (Red Hat Certified Engineer), which focuses on Ansible automation. Alongside that I am working through Brendan Gregg's _Systems Performance_ to build a foundation in observability and performance analysis.
+
+After that, I am considering the CCNA for networking depth, and pursuing the RHCA (Red Hat Certified Architect) with specialties in performance tuning and troubleshooting.
+
+The long-term goal is to work in a high-ownership, high-performance systems environment doing deep, knowledge-intensive tuning work — the kind of role where expertise compounds and shortcuts do not survive.
